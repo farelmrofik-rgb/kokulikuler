@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warisan Nusantara 2026 - Festival Budaya Tradisional Indonesia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-monument"></i>
+                    <span>Warisan Nusantara 2026</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#events">Acara</a></li>
+                    <li><a href="#map">Peta Budaya</a></li>
+                    <li><a href="#calendar">Kalender</a></li>
+                    <li><a href="#diversity">Keberagaman</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Warisan Nusantara 2026</h1>
+            <h2 class="hero-subtitle">Festival Budaya Tradisional Indonesia</h2>
+            <p class="hero-description">Jelajahi kekayaan budaya Indonesia melalui 100+ acara tradisional yang tersebar di seluruh Nusantara sepanjang tahun 2026</p>
+            <a href="#events" class="hero-btn">Jelajahi Acara</a>
+        </div>
+        <div class="hero-pattern">
+            <div class="pattern batik"></div>
+            <div class="pattern wayang"></div>
+            <div class="pattern tenun"></div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Agenda Acara Budaya 2026</h2>
+                <p class="section-subtitle">Temukan festival, upacara adat, dan pertunjukan tradisional dari berbagai daerah di Indonesia</p>
+            </div>
+            
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="region-filter">Filter Daerah:</label>
+                    <select id="region-filter" class="filter-select">
+                        <option value="all">Semua Daerah</option>
+                        <option value="sumatra">Sumatra</option>
+                        <option value="java">Jawa</option>
+                        <option value="bali">Bali & Nusa Tenggara</option>
+                        <option value="kalimantan">Kalimantan</option>
+                        <option value="sulawesi">Sulawesi</option>
+                        <option value="papua">Papua & Maluku</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="month-filter">Filter Bulan:</label>
+                    <select id="month-filter" class="filter-select">
+                        <option value="all">Semua Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                    </select>
+                </div>
+                <button id="reset-filters" class="reset-btn">Reset Filter</button>
+            </div>
+            
+            <div class="events-grid" id="events-container">
+                <!-- Events akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Map Section -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Peta Budaya Nusantara</h2>
+                <p class="section-subtitle">Temukan lokasi acara budaya di seluruh Indonesia</p>
+            </div>
+            <div class="map-container">
+                <div id="cultural-map"></div>
+                <div class="map-legend">
+                    <h3>Legenda Acara</h3>
+                    <div class="legend-item">
+                        <span class="legend-color festival"></span>
+                        <span>Festival Budaya</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color ceremony"></span>
+                        <span>Upacara Adat</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color performance"></span>
+                        <span>Pertunjukan Seni</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color exhibition"></span>
+                        <span>Pameran & Pasar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section" id="calendar">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Kalender Acara 2026</h2>
+                <p class="section-subtitle">Jadwal lengkap acara budaya tradisional sepanjang tahun</p>
+            </div>
+            <div class="calendar-controls">
+                <button id="prev-month" class="calendar-nav"><i class="fas fa-chevron-left"></i></button>
+                <h3 id="current-month-year">Januari 2026</h3>
+                <button id="next-month" class="calendar-nav"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar" id="calendar-container">
+                <!-- Kalender akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Diversity Section -->
+    <section class="diversity-section" id="diversity">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Keberagaman Budaya Indonesia</h2>
+                <p class="section-subtitle">Indonesia memiliki lebih dari 1.300 suku bangsa dengan kekayaan tradisi yang unik</p>
+            </div>
+            <div class="diversity-content">
+                <div class="diversity-info">
+                    <div class="diversity-card">
+                        <div class="diversity-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>300+ Bahasa Daerah</h3>
+                        <p>Indonesia memiliki lebih dari 300 bahasa daerah yang masih digunakan dalam kehidupan sehari-hari dan upacara adat.</p>
+                    </div>
+                    <div class="diversity-card">
+                        <div class="diversity-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>5.000+ Tarian Tradisional</h3>
+                        <p>Setiap daerah memiliki tarian khas dengan makna filosofis yang dalam, dari Tari Saman hingga Tari Kecak.</p>
+                    </div>
+                    <div class="diversity-card">
+                        <div class="diversity-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Ragam Kuliner Tradisional</h3>
+                        <p>Lebih dari 5.300 resep tradisional yang menjadi warisan kuliner Nusantara dengan cita rasa unik setiap daerah.</p>
+                    </div>
+                    <div class="diversity-card">
+                        <div class="diversity-icon">
+                            <i class="fas fa-archway"></i>
+                        </div>
+                        <h3>Warisan Arsitektur Adat</h3>
+                        <p>Rumah adat dengan filosofi hidup harmonis dengan alam, seperti Rumah Gadang, Tongkonan, dan Honai.</p>
+                    </div>
+                </div>
+                
+                <div class="ethnic-groups">
+                    <h3>Beberapa Suku Besar di Indonesia</h3>
+                    <div class="ethnic-list">
+                        <div class="ethnic-item">
+                            <h4>Jawa</h4>
+                            <p>40% populasi, dikenal dengan seni wayang, batik, dan upacara Selametan</p>
+                        </div>
+                        <div class="ethnic-item">
+                            <h4>Sunda</h4>
+                            <p>15% populasi, memiliki seni Angklung, Wayang Golek, dan Upacara Seren Taun</p>
+                        </div>
+                        <div class="ethnic-item">
+                            <h4>Batak</h4>
+                            <p>3% populasi, terkenal dengan rumah adat Bolon, tari Tor-tor, dan upacara Mangokal Holi</p>
+                        </div>
+                        <div class="ethnic-item">
+                            <h4>Bali</h4>
+                            <p>1.7% populasi, menjaga tradisi Hindu Dharma dengan upacara Melasti, Ogoh-ogoh, dan Ngaben</p>
+                        </div>
+                        <div class="ethnic-item">
+                            <h4>Bugis</h4>
+                            <p>2.5% populasi, pelaut ulung dengan tradisi Pinisi, upacara Mappalili, dan tari Paduppa</p>
+                        </div>
+                        <div class="ethnic-item">
+                            <h4>Papua</h4>
+                            <p>1% populasi, memiliki kekayaan budaya Honai, upacara Bakar Batu, dan tarian Perang</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Galeri Budaya Nusantara</h2>
+                <p class="section-subtitle">Visualisasi kekayaan warisan tradisional Indonesia</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="c:\Users\user\Downloads\Warisan Nusantara 2026 - Festival Budaya Tradisional Indonesia_files\Tari-Kecak-GWK-Tempat-Nonton-Tari-Kecak-di-Bali-Traveloka-Xperience.webp" alt="Tari Bali">
+                    <div class="gallery-caption">Tari Kecak, Bali</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="c:\Users\user\Downloads\Warisan Nusantara 2026 - Festival Budaya Tradisional Indonesia_files\Dalang_cilik_di_Pasar_Malam_Semawis,_Semarang.jpg" alt="Wayang Kulit">
+                    <div class="gallery-caption">Wayang Kulit, Jawa Tengah</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="c:\Users\user\Downloads\Warisan Nusantara 2026 - Festival Budaya Tradisional Indonesia_files\Rumah-Gadang9239821392.jpg" alt="Rumah Gadang">
+                    <div class="gallery-caption">Rumah Gadang, Sumatra Barat</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="c:\Users\user\Downloads\Warisan Nusantara 2026 - Festival Budaya Tradisional Indonesia_files\Cover_Blog_Dienvibi_8_f9c3ba6f-4e3f-469f-a33a-847c7e5790c8.png" alt="Tenun Ikat">
+                    <div class="gallery-caption">Tenun Ikat, Nusa Tenggara Timur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-monument"></i>
+                    <span>Warisan Nusantara 2026</span>
+                </div>
+                <p class="footer-description">Website ini didedikasikan untuk melestarikan dan mempromosikan kekayaan budaya tradisional Indonesia. Mari kita jaga warisan nenek moyang untuk generasi mendatang.</p>
+                <div class="footer-info">
+                    <div class="footer-contact">
+                        <h4>Kontak</h4>
+                        <p><i class="fas fa-envelope"></i> kelompok5@infonusantara.com</p>
+                        <p><i class="fas fa-phone"></i> +62 85755892139</p>
+                    </div>
+                    <div class="footer-social">
+                        <h4>Ikuti Kami</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Warisan Nusantara. Semua hak dilindungi.</p>
+                    <p>Dibangun dengan <i class="fas fa-heart"></i> untuk Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Event Modal -->
+    <div class="modal" id="event-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Konten modal akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
